@@ -1326,6 +1326,37 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.0115566, y: 0.30656445}
   m_EdgeRadius: 0
+--- !u!1 &134516183
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 134516184}
+  m_Layer: 0
+  m_Name: DetectionPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &134516184
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134516183}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.41, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1558791511}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &459075662
 GameObject:
   m_ObjectHideFlags: 0
@@ -10677,12 +10708,12 @@ GameObject:
   - component: {fileID: 1558791510}
   - component: {fileID: 1558791513}
   - component: {fileID: 1558791512}
-  - component: {fileID: 1558791514}
   - component: {fileID: 1558791516}
+  - component: {fileID: 1558791514}
   - component: {fileID: 1558791515}
   - component: {fileID: 1558791517}
   m_Layer: 0
-  m_Name: TorchGoblim
+  m_Name: TorchGoblin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10749,11 +10780,12 @@ Transform:
   m_GameObject: {fileID: 1558791509}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.34, y: -0.7, z: 0}
+  m_LocalPosition: {x: 6.2, y: -0.7, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 592960502}
+  - {fileID: 134516184}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &1558791512
@@ -10832,10 +10864,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   attackPoint: {fileID: 592960502}
-  weaponRange: 1
+  weaponRange: 0.8
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
+  stunTime: 0.2
+  knockedBackForce: 8
 --- !u!58 &1558791515
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -10883,8 +10917,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39b7a084a387b3142aa57bb7d22b8339, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 1
-  speed: 3
+  playerDetectRange: 4
+  detectionPoint: {fileID: 134516184}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  attackCoolDown: 2
+  attackCoolDownTimer: 2
+  attackRange: 0.8
+  speed: 2
   facingDirection: -1
 --- !u!95 &1558791517
 Animator:
@@ -11931,6 +11972,7 @@ GameObject:
   - component: {fileID: 1943462540}
   - component: {fileID: 1943462541}
   - component: {fileID: 1943462542}
+  - component: {fileID: 1943462543}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -12120,6 +12162,19 @@ MonoBehaviour:
   maxHealth: 3
   healthText: {fileID: 1852452622}
   healthTextAnim: {fileID: 1852452624}
+--- !u!114 &1943462543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1943462535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d8e965230f035043a31776e74ddcee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animation: {fileID: 1943462541}
 --- !u!1 &2083662524
 GameObject:
   m_ObjectHideFlags: 0

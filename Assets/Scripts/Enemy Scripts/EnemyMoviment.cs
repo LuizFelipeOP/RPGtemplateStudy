@@ -13,7 +13,7 @@ public class EnemyMoviment : MonoBehaviour
     public LayerMask playerLayer;
 
     public float attackCoolDown = 2;
-    public float attackCoolDownTimer;
+    public float attackCoolDownTimer = 2;
 
     public float attackRange = 1.2f;
     public float speed = 4;
@@ -97,16 +97,16 @@ public class EnemyMoviment : MonoBehaviour
                 attackCoolDownTimer = attackCoolDown;
                 ChangeState(EnemyState.Attacking);
             }
-            else if(Vector2.Distance(transform.position, player.position) > attackRange)
+            else if (Vector2.Distance(transform.position, player.position) > attackRange && enemyState != EnemyState.Attacking)
             {
                 ChangeState(EnemyState.Chasing);
 
             }
-            else
-            {
-                rb.velocity = Vector2.zero;
-                ChangeState(EnemyState.Idle);
-            }
+        }
+        else
+        {
+            rb.velocity = Vector2.zero;
+            ChangeState(EnemyState.Idle);
         }
     }
     private void OnDrawGizmosSelected()
