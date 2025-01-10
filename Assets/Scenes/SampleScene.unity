@@ -3460,6 +3460,37 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
+--- !u!1 &794505362
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 794505363}
+  m_Layer: 6
+  m_Name: attackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &794505363
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794505362}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.341, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1943462539}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &802240014
 GameObject:
   m_ObjectHideFlags: 0
@@ -10712,7 +10743,9 @@ GameObject:
   - component: {fileID: 1558791514}
   - component: {fileID: 1558791515}
   - component: {fileID: 1558791517}
-  m_Layer: 0
+  - component: {fileID: 1558791518}
+  - component: {fileID: 1558791519}
+  m_Layer: 3
   m_Name: TorchGoblin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10948,6 +10981,32 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1558791518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558791509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb2665d0b52e7e54e9346c5911e9998d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 2
+  maxHealth: 2
+--- !u!114 &1558791519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558791509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83e83afcd7c66b40ba66a1d828dd373, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1635871158
 GameObject:
   m_ObjectHideFlags: 0
@@ -12106,7 +12165,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 794505363}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1943462540
@@ -12175,7 +12235,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d8e965230f035043a31776e74ddcee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animation: {fileID: 1943462541}
+  attackPoint: {fileID: 794505363}
+  weaponRange: 1
+  knockbackForce: 50
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  damage: 1
+  anim: {fileID: 1943462541}
   cooldown: 2
 --- !u!1 &2083662524
 GameObject:

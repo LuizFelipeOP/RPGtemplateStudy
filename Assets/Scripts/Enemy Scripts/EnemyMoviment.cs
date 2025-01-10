@@ -120,5 +120,6 @@ public enum EnemyState
 {
     Idle,
     Chasing,
-    Attacking
+    Attacking,
+    Knockback
 }
