@@ -26,7 +26,7 @@ public class EnemyMoviment : MonoBehaviour
         anim = GetComponent<Animator>();
         ChangeState(EnemyState.Idle);
     }
-    void ChangeState(EnemyState newState)
+    public void ChangeState(EnemyState newState)
     {
         //sai da animação
         if (enemyState == EnemyState.Idle)
@@ -51,18 +51,20 @@ public class EnemyMoviment : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckForPlayer();
-        if (attackCoolDownTimer > 0)
-        {
-            attackCoolDownTimer -= Time.deltaTime;
-        }
-        if (enemyState == EnemyState.Chasing)
-        {
-            Chase();
-        }
-        if(enemyState == EnemyState.Attacking)
-        {
-            rb.velocity = Vector2.zero;
+        if (enemyState != EnemyState.Knockback){
+            CheckForPlayer();
+            if (attackCoolDownTimer > 0)
+            {
+                attackCoolDownTimer -= Time.deltaTime;
+            }
+            if (enemyState == EnemyState.Chasing)
+            {
+                Chase();
+            }
+            if(enemyState == EnemyState.Attacking)
+            {
+                rb.velocity = Vector2.zero;
+            }
         }
     }
 

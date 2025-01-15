@@ -4,23 +4,20 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public int currentHealth;
-    public int maxHealth;
-
     private void Start()
     {
-        currentHealth = maxHealth;
+        StatsManager.Instance.currentHealthGoblin = StatsManager.Instance.maxHealthGoblin;
     }
 
     public void ChangeHealth(int amount)
     {
-        currentHealth += amount;
+        StatsManager.Instance.currentHealthGoblin += amount;
 
-        if(currentHealth > maxHealth)
+        if(StatsManager.Instance.currentHealthGoblin > StatsManager.Instance.maxHealthGoblin)
         {
-            currentHealth = maxHealth;
+            StatsManager.Instance.currentHealthGoblin = StatsManager.Instance.maxHealthGoblin;
         }
-        else if(currentHealth <= 0)
+        else if(StatsManager.Instance.currentHealthGoblin <= 0)
         {
             Destroy(gameObject);
         }
