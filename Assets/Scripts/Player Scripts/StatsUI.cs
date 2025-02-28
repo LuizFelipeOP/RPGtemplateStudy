@@ -8,7 +8,7 @@ public class StatsUI : MonoBehaviour
     public GameObject[] statsSlots;
     public CanvasGroup statsCanvas;
 
-    private bool statsOpen = false;
+    public bool statsOpen = false;
 
     private void Start()
     {
